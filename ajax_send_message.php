@@ -1,0 +1,1 @@
+<?php session_start(); require 'db.php'; if(!isset($_SESSION['user_id'])) exit; $msg=trim($_POST['message']); if($msg){ $pdo->prepare("INSERT INTO messages (sender_id, receiver_id, message, created_at) VALUES (?,?,?,?)")->execute([$_SESSION['user_id'], $_POST['receiver_id'], htmlspecialchars($msg), date('Y-m-d H:i:s')]); } ?>
